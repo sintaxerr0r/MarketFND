@@ -50,20 +50,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿Eres nuevo?"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtenlaceregistro"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnenlaceregistro"
         app:layout_constraintStart_toStartOf="@+id/txtcontraseña" />
 
-    <TextView
-        android:id="@+id/txtenlaceregistro"
+    <Button
+        android:id="@+id/btnenlaceregistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:clickable="true"
-        android:enabled="true"
-        android:focusable="true"
-        android:text="REGISTRATE"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/transparent"
+        android:text="Registrate"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
         app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
