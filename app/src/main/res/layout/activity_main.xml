@@ -7,12 +7,65 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/txtinicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="25dp"
+        android:text="Inicia Sesión"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/txtusuario"
+        app:layout_constraintEnd_toEndOf="@+id/txtusuario" />
+
+    <EditText
+        android:id="@+id/txtusuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="246dp"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:textColorHint="@android:color/holo_blue_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="Usuario" />
+
+    <EditText
+        android:id="@+id/txtcontraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPersonName"
+        android:textColorHint="@android:color/holo_blue_dark"
+        app:layout_constraintStart_toStartOf="@+id/txtusuario"
+        app:layout_constraintTop_toBottomOf="@+id/txtusuario" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Eres nuevo?"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/txtcontraseña" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:clickable="true"
+        android:enabled="true"
+        android:text="REGISTRATE"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
+        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña"
+        android:focusable="true" />
 
 </android.support.constraint.ConstraintLayout>
