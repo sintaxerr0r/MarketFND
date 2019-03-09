@@ -10,8 +10,8 @@
         android:id="@+id/txtinicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="25dp"
         android:text="Inicia Sesión"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -50,11 +50,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿Eres nuevo?"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtenlaceregistro"
         app:layout_constraintStart_toStartOf="@+id/txtcontraseña" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtenlaceregistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
@@ -62,10 +62,10 @@
         android:layout_marginRight="9dp"
         android:clickable="true"
         android:enabled="true"
+        android:focusable="true"
         android:text="REGISTRATE"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
-        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
 
 </android.support.constraint.ConstraintLayout>
