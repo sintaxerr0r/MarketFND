@@ -14,9 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(getApplicationContext(),
-                "El basty se la come",Toast.LENGTH_LONG).show();
 
-        // Marikon cecilio
     }
 }
