@@ -4,7 +4,7 @@ package Clases;
 public class Usuario {
 
     //atributos
-
+    private long id_nombre;
     private String nombre;
     private String apellido;
     private String email;
@@ -15,7 +15,9 @@ public class Usuario {
 
 
     //constructor con parametros
-    public Usuario(String nombre, String apellido, String email, short telefono) {
+    public Usuario(int id_nombre, String nombre, String apellido, String email, short telefono) {
+
+        this.id_nombre = id_nombre;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -23,6 +25,14 @@ public class Usuario {
     }
 
     //get and set
+    public long getId_nombre() {
+        return id_nombre;
+    }
+
+    public void setId_nombre(long id_nombre) {
+        this.id_nombre = id_nombre;
+    }
+
     public String getNombre() {
         return nombre;
     }
