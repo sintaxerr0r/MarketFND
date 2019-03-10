@@ -51,10 +51,22 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="Telefono(opcional)"
-        android:inputType="textEmailAddress"
+        android:inputType="text|number"
         android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintStart_toStartOf="@+id/txtemail"
         app:layout_constraintTop_toBottomOf="@+id/txtemail" />
+
+    <EditText
+        android:id="@+id/txtcontraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColorHint="@android:color/holo_blue_dark"
+        app:layout_constraintStart_toStartOf="@+id/txttelefono"
+        app:layout_constraintTop_toBottomOf="@+id/txttelefono" />
 
     <Button
         android:id="@+id/btnregistro"
@@ -66,7 +78,7 @@
         android:background="@android:color/transparent"
         android:text="Registrarse"
         android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintStart_toStartOf="@+id/txttelefono"
-        app:layout_constraintTop_toBottomOf="@+id/txttelefono" />
+        app:layout_constraintStart_toStartOf="@+id/txtcontraseña"
+        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
 
 </android.support.constraint.ConstraintLayout>

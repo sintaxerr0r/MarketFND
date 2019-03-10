@@ -1,8 +1,7 @@
 package ergosoft.marketfnd;
 
-import android.app.DownloadManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +15,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +26,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     private EditText apellido;
     private EditText email;
     private EditText telefono;
+    private EditText contraseña;
     private Button registro;
 
 
@@ -41,6 +40,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         apellido = findViewById(R.id.txtapellido);
         email = findViewById(R.id.txtemail);
         telefono = findViewById(R.id.txttelefono);
+        contraseña = findViewById(R.id.txtcontraseña);
         registro = findViewById(R.id.btnregistro);
 
         registro.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                 parametros.put("apellido", apellido.getText().toString());
                 parametros.put("email", email.getText().toString());
                 parametros.put("telefono", telefono.getText().toString());
+                parametros.put("contraseña", contraseña.getText().toString());
                 return parametros;
             }
         };
