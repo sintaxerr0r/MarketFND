@@ -25,10 +25,12 @@
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
         android:layout_marginTop="246dp"
+        android:layout_marginBottom="101dp"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
         android:textColorHint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@+id/btniniciosesion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:hint="Usuario" />
@@ -57,11 +59,22 @@
         android:id="@+id/btnenlaceregistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="96dp"
         android:background="@android:color/transparent"
         android:text="Registrate"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
         app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
+
+    <Button
+        android:id="@+id/btniniciosesion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="294dp"
+        android:text="Iniciar Sesión"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
+        app:layout_constraintStart_toStartOf="@+id/txtcontraseña"
+        app:layout_constraintTop_toBottomOf="@+id/txtusuario" />
 
 </android.support.constraint.ConstraintLayout>

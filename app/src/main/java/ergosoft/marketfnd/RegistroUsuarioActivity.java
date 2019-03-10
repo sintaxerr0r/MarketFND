@@ -72,7 +72,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
             }
-        }){
+        } ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> parametros = new HashMap<>();
