@@ -1,6 +1,8 @@
 package ergosoft.marketfnd;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +17,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
     //variables
@@ -28,7 +32,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     private EditText telefono;
     private EditText contraseña;
     private Button registro;
-
+    //private LocalDate fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +44,14 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         apellido = findViewById(R.id.txtapellido);
         email = findViewById(R.id.txtemail);
         telefono = findViewById(R.id.txttelefono);
+        //fecha = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yy/MM/dd"));
         contraseña = findViewById(R.id.txtcontraseña);
         registro = findViewById(R.id.btnregistro);
 
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingreso("https://auth-db185.hostinger.com/registrousuario.php");
+                ingreso("http://marketfnd.tk/registrousuario.php");
             }
         });
     }
@@ -61,7 +66,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -71,6 +76,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                 parametros.put("apellido", apellido.getText().toString());
                 parametros.put("email", email.getText().toString());
                 parametros.put("telefono", telefono.getText().toString());
+                parametros.put("fecha", "2019-03-10");
                 parametros.put("contraseña", contraseña.getText().toString());
                 return parametros;
             }
