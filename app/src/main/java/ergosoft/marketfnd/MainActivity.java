@@ -1,35 +1,31 @@
-package ergosoft.marketfnd;
+/**
+ * @authors Bastián Vidal & Leandro Valenzuela
+ * @version 10-03-2019
+ */
 
-import android.app.Activity;
+package ergosoft.marketfnd;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
+/**
+ *  Modulo encargado de despliegue de la pantalla de inicio de sesión, con opciones de registro
+ */
 public class MainActivity extends AppCompatActivity {
-
+    /* Declaración de variables privadas de la clase */
     private Button enlaceregistro;
     private Button inicioSesion;
     private EditText usuario;
@@ -37,20 +33,27 @@ public class MainActivity extends AppCompatActivity {
     private Long id_usuario;
     private String nombre;
     private String apellido;
-
     private RequestQueue requestQueue;
 
 
+    /**
+     * Metodo por defecto onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        /* Instanciación de clases de XML a objetos JAVA*/
         usuario = findViewById(R.id.txtusuario);
         password = findViewById(R.id.txtcontraseña);
 
         inicioSesion = findViewById(R.id.btniniciosesion);
         enlaceregistro = findViewById(R.id.btnenlaceregistro);
 
+
+        /**
+         *  Método de escucha del botón de inicio de sesión
+         */
         inicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        /**
+         *  Método de escucha del enlace al activity de registro de usuario
+         */
         enlaceregistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
+    /**
+     * Método encargado de validación de datos de inicio de sesión mediante el uso de la plataforma web
+     * @param URL Url al archivo php del servidor web que realiza de intermediador con la base de datos
+     */
     private void login(String URL){
         String URLT = URL;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
@@ -82,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         nombre = jsonObject.getString("nombre");
                         apellido = jsonObject.getString("apellido");
 
-                        //REEMPLAZAR POR UN PROGRESS BAR DE INICIO DE SESION
+                        //REEMPLAZAR POR UN PROGRESS BAR DE INICIO DE SESION****************************
                         if(id_usuario != 0 ){
                             Toast.makeText(MainActivity.this, "Correcto"+nombre+id_usuario, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),SesionIniciadaActivity.class);
@@ -90,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("nombre",nombre);
                             intent.putExtra("apellido",apellido);
                             startActivity(intent);
-                        }
+                        }//Fin IF
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                    }//Fin Try-Catch
+                }//Fin For
             }
         }, new Response.ErrorListener() {
             @Override
@@ -109,32 +120,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
 
+    }//Fin login()
 
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-//
-//            @Override
-//            public void onResponse(String response) {
-//                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_LONG).show();
-//            }
-//
-//        }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        )
-//        {
-//             protected Map<String, String> getParams() throws AuthFailureError {
-//                 Map<String, String> parametros = new HashMap<>();
-//                parametros.put("user",usuario.getText().toString().trim());
-//                parametros.put("password",password.getText().toString().trim());
-//                return parametros;
-//             }
-//        };
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(stringRequest);
-    }
-
-    }
+}//Fin Clase
 
