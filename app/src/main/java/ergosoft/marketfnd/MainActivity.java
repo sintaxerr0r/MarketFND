@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         inicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login("http://marketfnd.tk/login.php");
+                login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
             }
         });
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
     private void login(String URL){
-
+        String URLT = URL;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -82,18 +82,26 @@ public class MainActivity extends AppCompatActivity {
                         nombre = jsonObject.getString("nombre");
                         apellido = jsonObject.getString("apellido");
 
+                        //REEMPLAZAR POR UN PROGRESS BAR DE INICIO DE SESION
+                        if(id_usuario != 0 ){
+                            Toast.makeText(MainActivity.this, "Correcto"+nombre+id_usuario, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(),SesionIniciadaActivity.class);
+                            intent.putExtra("id",id_usuario);
+                            intent.putExtra("nombre",nombre);
+                            intent.putExtra("apellido",apellido);
+                            startActivity(intent);
+                        }
+
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    } catch (NullPointerException n){
-                        Toast.makeText(MainActivity.this, "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR DE CONEXIÓN", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Datos de inicio incorrectos o no se encuentra registrado", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
         }
         );

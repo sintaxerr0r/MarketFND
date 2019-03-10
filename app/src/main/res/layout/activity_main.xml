@@ -10,13 +10,16 @@
         android:id="@+id/txtinicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:layout_marginBottom="25dp"
         android:text="Inicia Sesión"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/txtusuario"
-        app:layout_constraintEnd_toEndOf="@+id/txtusuario" />
+        app:layout_constraintEnd_toEndOf="@+id/txtusuario"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
 
     <EditText
         android:id="@+id/txtusuario"
@@ -25,21 +28,22 @@
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
         android:layout_marginTop="246dp"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
         android:textColorHint="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toTopOf="@+id/btniniciosesion"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115"
         tools:hint="Usuario" />
 
     <EditText
         android:id="@+id/txtcontraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPersonName"
@@ -53,28 +57,35 @@
         android:layout_height="wrap_content"
         android:text="¿Eres nuevo?"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnenlaceregistro"
-        app:layout_constraintStart_toStartOf="@+id/txtcontraseña" />
+        app:layout_constraintStart_toStartOf="@+id/btniniciosesion" />
 
     <Button
         android:id="@+id/btnenlaceregistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="136dp"
         android:background="@android:color/transparent"
         android:text="Registrate"
         android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
-        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btniniciosesion"
+        app:layout_constraintTop_toBottomOf="@+id/btniniciosesion" />
 
     <Button
         android:id="@+id/btniniciosesion"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="294dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="65dp"
         android:text="Iniciar Sesión"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
         app:layout_constraintStart_toStartOf="@+id/txtcontraseña"
-        app:layout_constraintTop_toBottomOf="@+id/txtusuario" />
+        app:layout_constraintTop_toBottomOf="@+id/txtcontraseña" />
 
 </android.support.constraint.ConstraintLayout>

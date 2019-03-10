@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".SesionIniciadaActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="176dp"
+        android:layout_height="242dp"
+        android:text="Sesion iniciada y wea"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="265dp" />
 </android.support.constraint.ConstraintLayout>
