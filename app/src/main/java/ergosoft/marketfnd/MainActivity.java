@@ -55,34 +55,43 @@ public class MainActivity extends AppCompatActivity {
         /**
          *  Método de escucha del botón de inicio de sesión
          */
-        inicioSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
-
-                if(valido){
-                    login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
-                }else{
-                    Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        inicioSesion.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
+//
+//                if(valido){
+//                    login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
+//                }else{
+//                    Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
 
         /**
          *  Método de escucha del enlace al activity de registro de usuario
          */
-        enlaceregistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
-                startActivity(intregistro);
-            }
-        });
+//        enlaceregistro.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
+//                startActivity(intregistro);
+//            }
+//        });
 
         };
 
+    public void inicioSesion(View view){
+        comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
+
+        if(valido){
+            login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
+        }else{
+            Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
+        }
+    }
     /**
      * Método encargado de verificar si la cuenta de usuario ingresada se encuentra registrada
      * @param URL Url al archivo php del servidor web que realiza de intermediador con la base de datos
@@ -97,11 +106,10 @@ public class MainActivity extends AppCompatActivity {
                         jsonObject = response.getJSONObject(i);
                         id_usuario = Long.parseLong(jsonObject.getString("id_usuario"));
 
-                        if (id_usuario == 0) {
-                            valido = false;
-                        } else {
+                        if (id_usuario != 0) {
                             valido = true;
                         }
+
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), "Ha ocurrido un error de JSON, Contacte al administador", Toast.LENGTH_SHORT).show();
                     }
@@ -111,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //Toast.makeText(getApplicationContext(), "Usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
+                valido = false;
                 error.printStackTrace();
             }
         }
@@ -163,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
 
     }//Fin login()
 
+    public void lanzarRegistro(View view){
+        Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
+        startActivity(intregistro);
+    }
 
 }//Fin Clase
 
