@@ -5,8 +5,8 @@
 
 package ergosoft.marketfnd;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +25,7 @@ import org.json.JSONObject;
  *  Modulo encargado de despliegue de la pantalla de inicio de sesión, con opciones de registro
  */
 public class MainActivity extends AppCompatActivity {
+
     /* Declaración de variables privadas de la clase */
     private Button enlaceregistro;
     private Button inicioSesion;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         /* Instanciación de clases de XML a objetos JAVA*/
         usuario = findViewById(R.id.txtusuario);
         password = findViewById(R.id.txtcontraseña);
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        };
+        }
 
     public void inicioSesion(View view){
         comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());

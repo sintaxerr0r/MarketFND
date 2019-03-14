@@ -26,13 +26,13 @@
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
         android:layout_marginTop="296dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
         android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:hint="Usuario" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtcontraseña"
@@ -41,7 +41,7 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toTopOf="@+id/btniniciosesion"
         app:layout_constraintStart_toStartOf="@+id/txtusuario" />

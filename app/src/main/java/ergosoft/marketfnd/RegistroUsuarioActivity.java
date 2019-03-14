@@ -45,7 +45,6 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         apellido = findViewById(R.id.txtapellido);
         email = findViewById(R.id.txtemail);
         telefono = findViewById(R.id.txttelefono);
-        //fecha = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yy/MM/dd"));
         SimpleDateFormat datef = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         fecha = datef.format(date);
