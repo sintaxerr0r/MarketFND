@@ -68,13 +68,16 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                     usuario.setTelefono(Long.parseLong(telefono.getText().toString().trim()));
                     usuario.setContraseña(contraseña.getText().toString().trim());
 
-                    if(contraseña.getText().toString().trim().equals(contraseñaVal.getText().toString().trim())){
+                    if(contraseña.getText().toString().trim().equals(contraseñaVal.getText().toString().trim())  && !(contraseña.getText().toString().isEmpty())){
                         ingreso("http://marketfnd.tk/registrousuario.php");
                     }else{
                         Toast.makeText(getApplicationContext(), "Contraseñas ingresadas no coinciden", Toast.LENGTH_SHORT).show();
                     }
 
-                }catch (NullPointerException e){
+                }catch(NumberFormatException a){
+                    Toast.makeText(getApplicationContext(), "Tipo de dato incorrecto", Toast.LENGTH_SHORT).show();
+                }
+                catch (NullPointerException e){
                     Toast.makeText(getApplicationContext(), "Tipo de dato incorrecto", Toast.LENGTH_SHORT).show();
                 }
 
