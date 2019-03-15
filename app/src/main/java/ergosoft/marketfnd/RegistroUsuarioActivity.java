@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import Clases.Usuario;
+
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
@@ -32,8 +34,10 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     private EditText email;
     private EditText telefono;
     private EditText contraseña;
+    private EditText contraseñaVal;
     private Button registro;
     private String fecha;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,32 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         Date date = new Date();
         fecha = datef.format(date);
         contraseña = findViewById(R.id.txtcontraseña);
+        contraseñaVal = findViewById(R.id.txtcontraseña_val);
+
         registro = findViewById(R.id.btnregistro);
 
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingreso("http://marketfnd.tk/registrousuario.php");
+                try {
+                    usuario = new Usuario();
+                    usuario.setNombre(nombre.getText().toString().trim());
+                    usuario.setApellido(apellido.getText().toString().trim());
+                    usuario.setEmail(email.getText().toString().trim());
+                    usuario.setTelefono(Long.parseLong(telefono.getText().toString().trim()));
+                    usuario.setContraseña(contraseña.getText().toString().trim());
+
+                    if(contraseña.getText().toString().trim().equals(contraseñaVal.getText().toString().trim())){
+                        ingreso("http://marketfnd.tk/registrousuario.php");
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Contraseñas ingresadas no coinciden", Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (NullPointerException e){
+                    Toast.makeText(getApplicationContext(), "Tipo de dato incorrecto", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }
@@ -75,12 +99,12 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> parametros = new HashMap<>();
-                parametros.put("nombre", nombre.getText().toString());
-                parametros.put("apellido", apellido.getText().toString());
-                parametros.put("email", email.getText().toString());
-                parametros.put("telefono", telefono.getText().toString());
+                parametros.put("nombre", usuario.getNombre());
+                parametros.put("apellido", usuario.getApellido());
+                parametros.put("email", usuario.getEmail());
+                parametros.put("telefono",""+usuario.getTelefono());
                 parametros.put("fecha", fecha);
-                parametros.put("contraseña", contraseña.getText().toString());
+                parametros.put("contraseña", usuario.getContraseña());
                 return parametros;
             }
         };
