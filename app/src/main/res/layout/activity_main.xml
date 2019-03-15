@@ -10,6 +10,8 @@
         android:id="@+id/txtinicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="43dp"
         android:text="Inicia Sesión"
@@ -17,34 +19,36 @@
         app:layout_constraintBottom_toTopOf="@+id/txtusuario"
         app:layout_constraintStart_toStartOf="@+id/txtusuario"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.923" />
 
     <EditText
         android:id="@+id/txtusuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
         android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="292dp" />
 
     <EditText
         android:id="@+id/txtcontraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toTopOf="@+id/btniniciosesion"
-        app:layout_constraintStart_toStartOf="@+id/txtusuario" />
+        app:layout_constraintStart_toStartOf="@+id/txtusuario"
+        app:layout_constraintTop_toBottomOf="@+id/txtusuario"
+        app:layout_constraintVertical_bias="0.386" />
 
     <TextView
         android:id="@+id/textView"
@@ -67,7 +71,6 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="168dp"
         android:background="@android:color/transparent"
-        android:onClick="lanzarRegistro"
         android:text="Registrate"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,14 +81,12 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="88dp"
-        android:onClick="inicioSesion"
+        android:layout_marginBottom="236dp"
         android:text="Iniciar Sesión"
         android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/btnenlaceregistro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtcontraseña"
-        app:layout_constraintStart_toStartOf="@+id/txtcontraseña"
-        app:layout_constraintTop_toBottomOf="@+id/txtusuario" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtcontraseña" />
 
 </android.support.constraint.ConstraintLayout>

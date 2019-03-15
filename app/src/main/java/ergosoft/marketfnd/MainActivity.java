@@ -58,31 +58,31 @@ public class MainActivity extends AppCompatActivity {
         /**
          *  Método de escucha del botón de inicio de sesión
          */
-//        inicioSesion.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
-//
-//                if(valido){
-//                    login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
-//                }else{
+        inicioSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
+
+                if(valido){
+                    login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
+                }else{
 //                    Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+                }
+            }
+        });
 
 
         /**
          *  Método de escucha del enlace al activity de registro de usuario
          */
-//        enlaceregistro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
-//                startActivity(intregistro);
-//            }
-//        });
+        enlaceregistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
+                startActivity(intregistro);
+            }
+        });
 
         }
 
@@ -108,9 +108,10 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         jsonObject = response.getJSONObject(i);
                         id_usuario = Long.parseLong(jsonObject.getString("id_usuario"));
-
-                        if (id_usuario != 0) {
+                        if (!(jsonObject.isNull("id_usuario"))) {
                             valido = true;
+                        }else{
+                            valido = false;
                         }
 
                     } catch (JSONException e) {
@@ -121,12 +122,15 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //Toast.makeText(getApplicationContext(), "Usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Usuario ingresado no es válido", Toast.LENGTH_SHORT).show();
                 valido = false;
                 error.printStackTrace();
             }
         }
         );
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
 
     /**
@@ -175,10 +179,10 @@ public class MainActivity extends AppCompatActivity {
 
     }//Fin login()
 
-    public void lanzarRegistro(View view){
-        Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
-        startActivity(intregistro);
-    }
+//    public void lanzarRegistro(View view){
+//        Intent intregistro = new Intent(getApplicationContext(),RegistroUsuarioActivity.class);
+//        startActivity(intregistro);
+//    }
 
 }//Fin Clase
 
