@@ -10,7 +10,27 @@
         android:id="@+id/textView2"
         android:layout_width="176dp"
         android:layout_height="242dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
+        android:layout_marginBottom="224dp"
         android:text="Sesion iniciada y wea"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="265dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="54dp"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="31dp"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:src="@android:drawable/sym_action_chat"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

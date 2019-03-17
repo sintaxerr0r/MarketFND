@@ -20,6 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Clases.Usuario;
+
 
 /**
  *  Modulo encargado de despliegue de la pantalla de inicio de sesión, con opciones de registro
@@ -27,6 +29,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     /* Declaración de variables privadas de la clase */
+    private Usuario objUsuario;
     private Button enlaceregistro;
     private Button inicioSesion;
     private EditText usuario;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        objUsuario = new Usuario();
         /* Instanciación de clases de XML a objetos JAVA*/
         usuario = findViewById(R.id.txtusuario);
         password = findViewById(R.id.txtcontraseña);
@@ -86,15 +90,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-    public void inicioSesion(View view){
-        comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
-
-        if(valido){
-            login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
-        }else{
-            Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    public void inicioSesion(View view){
+//        comprobarUsuario("http://marketfnd.tk/comprobarRegistro.php?user="+usuario.getText().toString().trim());
+//
+//        if(valido){
+//            login("http://marketfnd.tk/login.php?user="+usuario.getText().toString().trim()+"&password="+password.getText().toString().trim());
+//        }else{
+//            Toast.makeText(getApplicationContext(), "El usuario ingresado no se encuentra registrado", Toast.LENGTH_SHORT).show();
+//        }
+//    }
     /**
      * Método encargado de verificar si la cuenta de usuario ingresada se encuentra registrada
      * @param URL Url al archivo php del servidor web que realiza de intermediador con la base de datos
@@ -146,17 +150,21 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        id_usuario = Long.parseLong(jsonObject.getString("id_usuario"));
-                        nombre = jsonObject.getString("nombre");
-                        apellido = jsonObject.getString("apellido");
 
                         //REEMPLAZAR POR UN PROGRESS BAR DE INICIO DE SESION****************************
                         if(id_usuario != 0 ){
                             Toast.makeText(MainActivity.this, "Correcto"+nombre+id_usuario, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),SesionIniciadaActivity.class);
+
+                            objUsuario.setId_usuario(id_usuario);
+                            objUsuario.setNombre(jsonObject.getString("nombre").trim());
+                            objUsuario.setApellido(jsonObject.getString("apellido").trim());
+                            objUsuario.setEmail(jsonObject.getString("email").trim());
+                            objUsuario.setTelefono(Long.parseLong(jsonObject.getString("telefono").trim()));
                             intent.putExtra("id",id_usuario);
                             intent.putExtra("nombre",nombre);
                             intent.putExtra("apellido",apellido);
+                            intent.putExtra("objUsuario",objUsuario);
                             startActivity(intent);
                         }//Fin IF
 
