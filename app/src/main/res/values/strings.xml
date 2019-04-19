@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarketFND</string>
+    <string name="ingreso_de_oferta">Ingreso de Oferta</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
