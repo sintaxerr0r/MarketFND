@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         jsonObject = response.getJSONObject(i);
                         id_usuario = Long.parseLong(jsonObject.getString("id_usuario"));
+                        //nombre = jsonObject.getString("nombre").trim();
                         if (!(jsonObject.isNull("id_usuario"))) {
                             valido = true;
                         }else{

@@ -26,8 +26,8 @@ public class SesionIniciadaActivity extends AppCompatActivity {
         mDrawerList = findViewById(R.id.left_drawer);
 
         //Set adapter
-        mDrawerList.setAdapter(new ArrayAdapter<String>
-                (this,R.layout.drawer_list_item,mPlanetTitles));
+//        mDrawerList.setAdapter(new ArrayAdapter<String>
+//                (this,R.layout.drawer_list_item,mPlanetTitles));
         //Set Click Listener
 
         // Click listener para el menu de navegacion
