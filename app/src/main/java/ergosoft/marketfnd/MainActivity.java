@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
                         //REEMPLAZAR POR UN PROGRESS BAR DE INICIO DE SESION****************************
                         if(id_usuario != 0 ){
                             Toast.makeText(MainActivity.this, "Correcto"+nombre+id_usuario, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),SesionIniciadaActivity.class);
+//                            Intent intent = new Intent(getApplicationContext(),SesionIniciadaActivity.class);
+                            Intent intent = new Intent(getApplicationContext(),MenuPrincipal.class);
 
                             objUsuario.setId_usuario(id_usuario);
                             objUsuario.setNombre(jsonObject.getString("nombre").trim());
